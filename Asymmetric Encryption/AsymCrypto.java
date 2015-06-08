@@ -15,8 +15,6 @@ public class AsymCrypto {
 		int p = generateRandomPrime();
 		int q = generateRandomPrime();
 		
-		p = 7;
-		q = 13;
 		AsymCrypto cryp = new AsymCrypto(p, q, 0, 0);
 		
 		// Encrypt message
