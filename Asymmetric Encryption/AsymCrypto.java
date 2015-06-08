@@ -1,34 +1,81 @@
 // This is a simple asymmetric encryption class.
 
 import java.io.*;
+import java.math.BigInteger;
+import java.nio.charset.Charset;
 import java.util.*;
 
 public class AsymCrypto {
+	private static int privateKey;
+	private static int publicKey;
+	private static int N;
+	
 	public static void main(String[] args) {
-		String s = "The quick brown fox jumps over the lazy dog";
+		String message = "The quick brown fox jumps over the lazy dog";
 		int p = generateRandomPrime();
 		int q = generateRandomPrime();
-
-		AsymCrypto cryp = new AsymCrypto(p, q, 1232139, 23214213);
+		
+		p = 7;
+		q = 13;
+		AsymCrypto cryp = new AsymCrypto(p, q, 0, 0);
+		
+		// Encrypt message
+		long[] m = new long[message.length()];
+		
+		for(int i = 0; i < m.length; i++) {
+			m[i] = (int) message.charAt(i);
+		}
+		
+		for(int i = 0; i < m.length; i++) {
+			m[i] = cryp.Encrypt(m[i]);
+		}
+		
+		System.out.println(m);
+		
+		for(int i = 0; i < m.length; i++) {
+			m[i] = cryp.Decrypt(m[i]);
+		}
+		
+		//String plainText = new String(m);
+		
+		System.out.println(m);
+		
 	}
 	
 	// ke represents the public key
 	// kd represents the private key
+	// Both of the keys are calculated in the constructor based on the passed
+	// prime numbers.
 	AsymCrypto(int p, int q, int Kd, int Ke) {
-		int N = p * q;
+		N = p * q;
 		int relativeMax = (p - 1) * (q - 1);
 		
-		//int relativePrime = findGCD(relativeMax, Ke);
+		if(relativeMax <= 2) {
+			throw new IllegalArgumentException("prime numbers are too small");
+		}
 		
-		Ke = 0;
+		int n = relativeMax;
+		
+		// find smallest relative prime to relativeMax that is less than relativeMax
+		while(n > 2) {
+			if(relativelyPrime(relativeMax, n)) {
+				Ke = n;
+			}
+			n--;
+		}
+		
+		publicKey = Ke;
+		
+		Kd = calculateKd(Ke, relativeMax);
+		privateKey = Kd;
 	}
 	
-	public static int Encrypt(int m) {
-		return 0;
+	public static long Encrypt(long m) {
+		return (long) Math.pow(m, publicKey) % N;
 	}
 	
-	public static int Decrypt(int m) {
-		return 0;
+	public static long Decrypt(long m) {
+		return (long) Math.pow(m, privateKey) % N;
 	}
 	
 	// Generates and then returns a random prime number.
@@ -56,5 +103,30 @@ public class AsymCrypto {
 		}
 		
 		return true;
+	}
+	
+	// returns true if a two numbers are relatively prime, false otherwise.
+	private static boolean relativelyPrime(int a, int b) {
+		return findGCD(a, b) == 1;
+	}
+	
+	// returns the greatest common divisor
+	private static int findGCD(int a, int b) {
+		if(b == 0) {
+			return a;
+		}
+		
+		return findGCD(b, a % b);
+	}
+	
+	// Calculates the private key based upon public key
+	private static int calculateKd(int Ke, int relativeMax) {
+		int Kd = 0;
+		
+		while((Kd * Ke % 72) != 1) {
+			Kd++;
+		}
+		
+		return Kd;
 	}
 }
