@@ -15,7 +15,14 @@ public class AsymCrypto {
 		int p = generateRandomPrime();
 		int q = generateRandomPrime();
 		
+//		p = 7;
+//		q = 13;
+		
 		AsymCrypto cryp = new AsymCrypto(p, q, 0, 0);
+		
+//		System.out.println(cryp.privateKey);
+//		System.out.println(cryp.publicKey);
+//		System.out.println(cryp.N);
 		
 		// Encrypt message
 		long[] m = new long[message.length()];
