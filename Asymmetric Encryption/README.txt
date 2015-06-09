@@ -2,7 +2,7 @@ Simple Java Asymmetric Encryption Class.
 
 In Progress...
 Still dealing with big Integers when encrypting and decrypting.
-Need to create a random 512 bit prime number instead of what just under the number 1000 for greatly enhanced security.
+Need to create a random 512 bit prime number instead of what I currently have. Which is any prime number from 0-1000 for greatly enhanced security.
 
 The Crypto class runs an example string "The quick brown fox jumps over the lazy dog” and shows the cyphertext output + decrypted plaintext recovered.
 
