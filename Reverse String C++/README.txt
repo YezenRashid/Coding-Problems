@@ -1,0 +1,1 @@
+Reverses a null terminated string in C++
