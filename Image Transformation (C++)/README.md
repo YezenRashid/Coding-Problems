@@ -1,0 +1,3 @@
+Uses the inlcuded image library to transform an image test.gif with the ability to shear, rotate, scale, and translate test.gif and output the newly transformed image as output.gif. Takes the transformation values from the included bat file.
+
+Takes the color values for the four sourrounding points and applies a bilinear interpolation to average and smooth out the pixel when transforming.			   pixel.
