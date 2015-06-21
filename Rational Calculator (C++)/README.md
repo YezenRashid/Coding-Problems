@@ -1,0 +1,1 @@
+This is a rational calculator written in c++. It allows you to multiply fractions.
