@@ -1,0 +1,1 @@
+Stack implementation using a linked list and templates.
