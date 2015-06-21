@@ -1,3 +1,5 @@
+// Generic Item class with one field to test Stack.
+
 #pragma once
 #include <string>
 using namespace std;
