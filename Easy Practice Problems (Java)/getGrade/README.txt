@@ -1,8 +1,7 @@
 Write a method called getGrade that accepts an integer representing a student's grade in a course and returns that student's numerical course grade. The grade can be between 0.0 (failing) and 4.0 (perfect). Assume that scores are in the range of 0 to 100 and that grades are based on the following scale:
 
 Score	Grade
-
-< 60	0.0
+<60	0.0
 60-62	0.7
 63	0.8
 64	0.9
