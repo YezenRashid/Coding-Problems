@@ -2,6 +2,7 @@ Write a method called getGrade that accepts an integer representing a student's 
 
 Score	Grade
 < 60	0.0
+
 60-62	0.7
 63	0.8
 64	0.9
