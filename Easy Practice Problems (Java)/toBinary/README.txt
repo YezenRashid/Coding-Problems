@@ -1,0 +1,1 @@
+Write a method named toBinary that accepts an integer as a parameter and returns a string of that number's representation in binary. For example, the call of toBinary(42) should return "101010".
