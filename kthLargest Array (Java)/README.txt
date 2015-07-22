@@ -2,7 +2,7 @@ Write a method called kthLargest that accepts an integer k and an array a as its
 
 For example, if the array passed contains the values {74, 85, 102, 99, 101, 56, 84} and the integer k passed is 2, your method should return 99 because there are two values at least as large as 99 (101 and 102).
 
-Assume that 0 <= k < a.length. (Hint: Consider sorting the array, or a copy of the array first.)
+Assume that 0 <= k < a.length. (Hint: Consider sorting the array, or a copy of the array first)
 
 
 There are many ways to solve this problem.  I first did it the easy way by just using the sort method.  I then did it the harder way by partioning similar to the quick sort algorithm.
