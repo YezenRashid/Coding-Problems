@@ -1,0 +1,1 @@
+Return the longest sequence of ascending integers given and integer array.
