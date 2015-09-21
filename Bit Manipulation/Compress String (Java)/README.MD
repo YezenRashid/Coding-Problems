@@ -1,0 +1,1 @@
+Compress a string from 8 bits a character to 5 bits a character and return the new compressed string.
