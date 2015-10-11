@@ -76,6 +76,59 @@ public class BinaryTree {
 		}
 	}
 	
+	public void printPreOrderIterative(Node root) {
+		if(root == null) {
+			return;
+		}
+		
+		Node current = root;
+		Stack<Node> s = new Stack<Node>();
+		s.push(root);
+		
+		while(!s.isEmpty()) {
+			current = s.pop();
+			System.out.print(current.data + " ");
+			
+			if(current.right != null) {
+				s.push(current.right);
+			}
+			if(current.left != null) {
+				s.push(current.left);
+			}
+		}
+	}
+	
+	public void printPostOrderIterative(Node root) {
+		if(root == null) {
+			return;
+		}
+		
+		Node current = root;
+		Stack<Node> s = new Stack<Node>();
+		s.push(root);
+		Node prev = null;
+		
+		while(!s.isEmpty()) {
+			current = s.peek();
+			if(prev == null || prev.left == current || prev.right == current) {
+				if(current.left != null) {
+					s.push(current.left);
+				} else if(current.right != null) {
+					s.push(current.right);
+				}
+			} else if(current.left == prev) {
+				if(current.right != null) {
+					s.push(current.right);
+				}
+			} else {
+				System.out.print(current.data + " ");
+				s.pop();
+			}
+			
+			prev = current;
+		}
+	}
+	
 	public Node getOverallRoot() {
 		return overallRoot;
 	}	
